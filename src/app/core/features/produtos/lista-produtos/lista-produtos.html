@@ -1,0 +1,8 @@
+<section>
+    <h2>Produtos</h2>
+    <div class="grid">
+        <app-card-produto *ngFor="let produto of produtos" [produto]="produto" (view)="onViewProduct($event)"
+            (add)="onAddToCart($event)">
+        </app-card-produto>
+    </div>
+</section>
