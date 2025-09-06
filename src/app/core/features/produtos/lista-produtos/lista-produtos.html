@@ -1,8 +1,21 @@
 <section>
-    <h2>Produtos</h2>
+    <header class="barradetarefas">
+        <h2>Produtos</h2>
+        <button class="brn promo" [class.active]="apenasPromo()" (click)="alternarPromo()">
+            @if (apenasPromo()) {
+            Mostrar todos
+            } @else {
+            Mostrar promoções
+            }
+        </button>
+    </header>
     <div class="grid">
-        <app-card-produto *ngFor="let produto of produtos" [produto]="produto" (view)="onViewProduct($event)"
-            (add)="onAddToCart($event)">
-        </app-card-produto>
+        @for (p of prodExibidos(); track p.id) {
+            @if (p.estado != 'esgotado') {
+            <app-card-produto [produto]="p" (add)="onAddToCart($event)" (view)="onViewProduct($event)"></app-card-produto>
+            }
+        } @empty {
+            <p class="vazio">nenhum produto encontrado para o filtro atual</p>
+        }
     </div>
 </section>
