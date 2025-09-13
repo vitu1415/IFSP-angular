@@ -1,7 +1,9 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardProduto } from '../card-produto/card-produto';
 import { Produto } from '../../../model/produto';
+import { ProdutoService } from '../services/produto.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -10,37 +12,14 @@ import { Produto } from '../../../model/produto';
   styleUrls: ['./lista-produtos.css']
 })
 export class ListaProdutos {
-  produtos: Produto[] = [
-    {
-      id: 1,
-      nome: 'Teclado Mecânico',
-      preco: 1200,
-      descricao: 'Switch blue. RGB.',
-      imageUrl: 'images/keyboard.jpg',
-      promo: true,
-      estado: 'usado'
-    },
-    {
-      id: 2,
-      nome: 'Mouse Gamer 7200 DPI',
-      preco: 649.5,
-      descricao: '10 botões, macro programável.',
-      imageUrl: 'images/mouse.jpg',
-      estado: 'novo'
-    },
-    {
-      id: 3,
-      nome: 'Headset Surround 7.1',
-      preco: 899.9,
-      descricao: 'Microfone com redução de ruido.',
-      imageUrl: 'images/headset.jpg',
-      estado: 'esgotado'
-    }
-  ];
+  private produtoService = inject(ProdutoService);
+  private produtos = toSignal<Produto[], Produto[]>(this.produtoService.listar(), {initialValue: []});
 
   apenasPromo = signal(false);
 
-  prodExibidos = computed(() => this.apenasPromo() ? this.produtos.filter(p => p.promo) : this.produtos);
+  prodExibidos = computed(() => this.apenasPromo() 
+                                ? this.produtos().filter(p => p.promo) 
+                                : this.produtos());
 
   alternarPromo(){
     this.apenasPromo.update(p => !p);
