@@ -17,7 +17,8 @@ export class ProdutoService {
       descricao: 'Switch blue. RGB.',
       imageUrl: 'images/keyboard.jpg',
       promo: true,
-      estado: 'usado'
+      estado: 'usado',
+      categoria: 'teclado'
     },
     {
       id: 2,
@@ -25,7 +26,8 @@ export class ProdutoService {
       preco: 649.5,
       descricao: '10 botões, macro programável.',
       imageUrl: 'images/mouse.jpg',
-      estado: 'novo'
+      estado: 'novo',
+      categoria: 'mouse'
     },
     {
       id: 3,
@@ -33,7 +35,8 @@ export class ProdutoService {
       preco: 899.9,
       descricao: 'Microfone com redução de ruido.',
       imageUrl: 'images/headset.jpg',
-      estado: 'esgotado'
+      estado: 'esgotado',
+      categoria: 'headset'
     }
   ];
 

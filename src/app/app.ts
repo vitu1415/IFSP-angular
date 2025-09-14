@@ -13,13 +13,6 @@ import { ListaProdutos } from './core/features/produtos/lista-produtos/lista-pro
 })
 export class App {
 
-  produto: Produto = {
-    id: 1,
-    nome: 'Produto 1',
-    preco: 79.9,
-    descricao: 'teste da descricao',
-  }
-
   sobre? : string;
 
   receberSobre(texto: string) {
