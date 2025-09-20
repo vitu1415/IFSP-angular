@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { LoggerService } from '../../../services/logger/logger.service';
-import { Produto } from '../../../model/produto';
 import { delay, Observable, of } from 'rxjs';
+import { LoggerService } from '../../../app/core/services/logger/logger.service';
+import { Produto } from '../../../app/core/model/produto';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +39,10 @@ export class ProdutoService {
 
   listar(): Observable<Produto[]>{
     this.logger.info('Obtendo lista de produtos...');
-    return of(this.listaMock).pipe(delay(1000));
+    return of(this.listaMock);
+  }
+  getById(id: number): Observable<Produto | undefined>{
+    this.logger.info('Obtendo produto por id...');
+    return of(this.listaMock.find(p => p.id === id)).pipe(delay(500));
   }
 }

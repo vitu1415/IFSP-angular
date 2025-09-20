@@ -1,11 +1,11 @@
 <section>
     <header class="barradetarefas">
         <h2>Produtos</h2>
-        <button class="brn promo" [class.active]="apenasPromo()" (click)="alternarPromo()">
+        <button class="btn sopromo" [class.ativo]="apenasPromo()" (click)="alterarPromo()">
             @if (apenasPromo()) {
-            Mostrar todos
+                ver todos
             } @else {
-            Mostrar promoções
+                apenas promoções
             }
         </button>
     </header>
