@@ -6,7 +6,7 @@
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   background: #fff;
-  height: 180px;
+  height: 200px;
 }
 
 .card.promo {
@@ -14,46 +14,31 @@
   border: 2px dashed #2f9e41;
 }
 
-.thumb {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
-  background: #f3f4f6;
+.card img {
+  width: 100%;
+  height: auto;
 }
 
-.conteudo {
-  display: grid;
-  gap: 8px;
+.card h3 {
+  margin: 0 0 6px;
 }
 
-.titulo {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #111827;
-}
-
-.desc {
+.card .desc {
   margin: 0;
   color: #4b5563;
-}
-
-.linhapreco {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.preco {
-  font-weight: 700;
-  color: #111827;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  flex-grow: 1;
+  max-height: 45px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .preco-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  justify-content: space-between;
+  margin-top: 6px;
 }
 
 .preco-group {
@@ -61,35 +46,31 @@
   flex-direction: column;
 }
 
+.preco {
+  font-weight: 700;
+  color: #111827;
+}
+
 .preco.desconto {
   color: #d32f2f;
-  font-weight: bold;
+  font-size: 1rem;
 }
 
 .preco.original {
   text-decoration: line-through;
   color: #888;
-  font-size: 0.9rem;
-}
-
-.acoes {
-  display: flex;
-  gap: 12px;
-  margin-top: 8px;
-  justify-content: right;
-}
-
-.esgotado {
-  padding-top: 10px;
-  color: red;
-  font-weight: bold;
+  font-size: 0.85rem;
 }
 
 .btn {
   padding: 8px 12px;
   border-radius: 8px;
-  border: 1px solid transparent;
   cursor: pointer;
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid #e5e7eb;
 }
 
 .btn.primary {
@@ -98,45 +79,5 @@
 }
 
 .btn.primary:hover {
-  opacity: 0.95;
-}
-
-.btn.ghost {
-  background: transparent;
-  border-color: #e5e7eb;
-  color: #374151;
-}
-
-.btn.ghost:hover {
-  background: #f9fafb;
-}
-
-.selo {
-  display: inline-block;
-  font-size: 0.75rem;
-  padding: 2px 8px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-}
-.selo.novo {
-  background: #ecfdf5;
-  color: #065f46;
-  border-color: #a7f3d0;
-}
-.selo.esgotado {
-  background: #fef2f2;
-  color: #991b1b;
-  border-color: #fecaca;
-}
-.selo.promo {
-  background: #eff6ff;
-  color: #1d4ed8;
-  border-color: #bfdbfe;
-}
-
-.cabecalho {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  opacity: .9;
 }

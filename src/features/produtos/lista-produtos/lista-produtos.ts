@@ -6,6 +6,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { LoggerService } from '../../../app/core/services/logger/logger.service';
 import { Produto } from '../../../app/core/model/produto';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -15,11 +16,13 @@ import { Produto } from '../../../app/core/model/produto';
   styleUrls: ['./lista-produtos.css']
 })
 export class ListaProdutos {
+  loading = signal(true);
   private produtoService = inject(ProdutoService);
   private router = inject(Router);
   logger = inject(LoggerService);
 
-  private produtos = toSignal<Produto[], Produto[]>(this.produtoService.listar(), {
+  private produtos = toSignal<Produto[], Produto[]>(this.produtoService.listar()
+  .pipe(finalize(() => this.loading.set(false))), {
     initialValue: []
   });
 
