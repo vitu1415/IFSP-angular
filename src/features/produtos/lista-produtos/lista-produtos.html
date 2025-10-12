@@ -1,0 +1,27 @@
+<section>
+    <header class="barradetarefas">
+        <h2>Produtos</h2>
+        <button class="btn sopromo" [class.ativo]="apenasPromo()" (click)="alterarPromo()">
+            @if (apenasPromo()) {
+                ver todos
+            } @else {
+                apenas promoções
+            }
+        </button>
+    </header>
+    @if (loading()) {
+        <p>Carregar produtos...</p>
+    }
+    @else if (prodExibidos().length === 0){
+        <p class="vazio">nenhum produto encontrado para o filtro atual</p>
+    }
+    @else {
+        <div class="grid">
+        @for (p of prodExibidos(); track p.id) {
+            @if (p.estado != 'esgotado') {
+            <app-card-produto [produto]="p" (add)="onAddToCart($event)" (view)="onViewProduct($event)"></app-card-produto>
+            }
+        }
+        </div>
+    }
+</section>
