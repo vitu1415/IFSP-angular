@@ -2,7 +2,7 @@
     <img clas="thumb" [src]="produto().imageUrl" [alt]="produto().nome" />
     <div class="conteudo">
         <header class="cabecalho">
-            <h3 class="titulo">{{ produto().nome }}</h3>
+            <h3 class="titulo">{{ produto().nome | truncar}}</h3>
 
             @switch (produto().estado) {
             @case ('novo') {
