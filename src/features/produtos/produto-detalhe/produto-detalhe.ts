@@ -28,10 +28,10 @@ export class ProdutoDetalhe {
         return;
       }
       this.loading.set(true);
-      // this.produtoService.getById(id).subscribe(p => {
-      //   this.produto.set(p);
-      //   this.loading.set(false);
-      // });
+      this.produtoService.getById(id).subscribe(p => {
+        this.produto.set(p);
+        this.loading.set(false);
+      });
     });
   }
 

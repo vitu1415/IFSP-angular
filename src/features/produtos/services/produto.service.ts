@@ -25,8 +25,14 @@ export class ProdutoService {
     );
   }
 
-  // getById(id: number): Observable<Produto | undefined>{
-  //   this.logger.info('Obtendo produto por id...');
-  //   return of(this.listaMock.find(p => p.id === id)).pipe(delay(500));
-  // }
+  getById(id: number): Observable<Produto | undefined>{
+    this.logger.info('Obtendo produto por id...');
+    return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(
+      map(item => item ? ProdutoMapper.fromJson(item) : undefined),
+      catchError(err => {
+        this.logger.error('[ProdutoService] getById() - erro ao consumir API', err);
+        return of(undefined);
+      })
+    )
+  }
 }
