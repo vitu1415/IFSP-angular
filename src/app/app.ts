@@ -3,7 +3,7 @@ import { Header } from "./core/header/header";
 import { Footer } from "./core/footer/footer";
 import { Banner } from "./core/banner/banner";
 import { Produto } from './core/model/produto';
-import { ListaProdutos } from './core/features/produtos/lista-produtos/lista-produtos';
+import { ListaProdutos } from './features/produtos/lista-produtos/lista-produtos';
 
 @Component({
   selector: 'app-root',

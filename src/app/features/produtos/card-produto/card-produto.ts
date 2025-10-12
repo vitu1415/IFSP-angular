@@ -1,9 +1,9 @@
 import { Component, input, output, signal } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { QuantidadeControle } from "../../../../shared/quantidade-controle/quantidade-controle";
-import { Produto } from '../../../model/produto';
-import { DescontoPipe } from '../../../../shared/pipes/desconto-pipe';
-import { TruncarPipe } from '../../../../shared/pipes/truncar-pipe';
+import { QuantidadeControle } from '../../../shared/quantidade-controle/quantidade-controle';
+import { DescontoPipe } from '../../../shared/pipes/desconto-pipe';
+import { TruncarPipe } from '../../../shared/pipes/truncar-pipe';
+import { Produto } from '../../../core/model/produto';
 
 @Component({
   selector: 'app-card-produto',
