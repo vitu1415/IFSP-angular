@@ -27,13 +27,32 @@ export class ListaProdutos {
   });
 
   apenasPromo = signal(false);
-  prodExibidos = computed(() => this.apenasPromo()
-    ? this.produtos().filter((p) => p.promo)
-    : this.produtos());
+  filtrarCategoria = signal(null as string | null);
+
+  prodExibidos = computed(() => {
+    let lista = this.produtos();
+
+    if (this.apenasPromo()) {
+      lista = lista.filter(p => p.promo);
+    }
+
+    if (this.filtrarCategoria()) {
+      lista = lista.filter(p => p.categoria === this.filtrarCategoria());
+    }
+
+    return lista;
+  });
 
   alterarPromo() {
     this.apenasPromo.update(p => !p);
-    console.log("apenasPromo: "+this.apenasPromo());
+  }
+
+  alterarFiltrarCategoria(categoria: string | null) {
+    if (categoria === 'null' || categoria === '') {
+      this.filtrarCategoria.set(null);
+    } else {
+      this.filtrarCategoria.set(categoria);
+    }
   }
 
   onViewProduct(id: number) {
@@ -43,4 +62,9 @@ export class ListaProdutos {
   onAddToCart(produto: { id: number; quantidade: number }) {
     alert(`Carrinho ainda não implementado. Quantidade: ${produto.quantidade}`);
   }
+
+  categorias = computed(() => {
+    const todasCategorias = this.produtos().map(p => p.categoria);
+    return Array.from(new Set(todasCategorias));
+  });
 }

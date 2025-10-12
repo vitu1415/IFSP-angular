@@ -8,6 +8,12 @@
                 apenas promoções
             }
         </button>
+        <select (change)="alterarFiltrarCategoria(($any($event.target)).value || null)">
+            <option [value]="null">Todas categorias</option>
+            @for (c of categorias(); track c) {
+                <option [value]="c">{{ c }}</option>                
+            }
+        </select>
     </header>
     @if (loading()) {
         <p>Carregar produtos...</p>
