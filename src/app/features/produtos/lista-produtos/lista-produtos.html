@@ -1,0 +1,28 @@
+<section>
+    <header class="barradetarefas">
+        <h2>Produtos</h2>
+        <button class="brn promo" [class.active]="apenasPromo()" (click)="alternarPromo()">
+            @if (apenasPromo()) {
+            Mostrar todos
+            } @else {
+            Mostrar promoções
+            }
+        </button>
+        <select (change)="alterarFiltrarCategoria(($any($event.target)).value || null)">
+            <option [value]="null">Todas categorias</option>
+            @for (c of categorias(); track c) {
+                <option [value]="c">{{ c }}</option>                
+            }
+        </select>
+
+    </header>
+    <div class="grid">
+        @for (p of prodExibidos(); track p.id) {
+            @if (p.estado != 'esgotado') {
+            <app-card-produto [produto]="p" (add)="onAddToCart($event)" (view)="onViewProduct($event)"></app-card-produto>
+            }
+        } @empty {
+            <p class="vazio">nenhum produto encontrado para o filtro atual</p>
+        }
+    </div>
+</section>
